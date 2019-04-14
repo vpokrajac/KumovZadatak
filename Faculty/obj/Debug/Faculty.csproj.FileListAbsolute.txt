@@ -1,0 +1,10 @@
+C:\Users\vlado.pokrajac\source\repos\Faculty\Faculty\bin\Debug\Faculty.exe.config
+C:\Users\vlado.pokrajac\source\repos\Faculty\Faculty\bin\Debug\Faculty.exe
+C:\Users\vlado.pokrajac\source\repos\Faculty\Faculty\bin\Debug\Faculty.pdb
+C:\Users\vlado.pokrajac\source\repos\Faculty\Faculty\bin\Debug\Faculty.Model.dll
+C:\Users\vlado.pokrajac\source\repos\Faculty\Faculty\bin\Debug\Faculty.Model.pdb
+C:\Users\vlado.pokrajac\source\repos\Faculty\Faculty\obj\Debug\Faculty.csprojAssemblyReference.cache
+C:\Users\vlado.pokrajac\source\repos\Faculty\Faculty\obj\Debug\Faculty.csproj.CoreCompileInputs.cache
+C:\Users\vlado.pokrajac\source\repos\Faculty\Faculty\obj\Debug\Faculty.csproj.CopyComplete
+C:\Users\vlado.pokrajac\source\repos\Faculty\Faculty\obj\Debug\Faculty.exe
+C:\Users\vlado.pokrajac\source\repos\Faculty\Faculty\obj\Debug\Faculty.pdb
