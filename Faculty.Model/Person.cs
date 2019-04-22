@@ -29,7 +29,7 @@ namespace Faculty.Model
         public DateTime DateOfBirth
         {
             get { return dateOfBirth; }
-            set { dateOfBirth = Convert.ToDateTime(value); }
+            set { dateOfBirth = value; }
         }
 
         public Person()
@@ -53,13 +53,16 @@ namespace Faculty.Model
 
         public int GetAge()
         {
-            return DateTime.Today.Year - dateOfBirth.Year;
-        }
+            int dani = (DateTime.Today - dateOfBirth).Days;
+            return dani / 365;
+            //return (((TimeSpan)(DateTime.Today - dateOfBirth)).Days)/365;
+         
+             }
 
-        public virtual bool IsValid()
+        public virtual bool IsValid() 
         {
-            if (firstName == null || firstName == "" || firstName == " "
-                && lastName == null || lastName == "" || lastName == " ")
+            if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName)
+               )
             {
                 return false;
             }

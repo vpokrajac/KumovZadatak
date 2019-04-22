@@ -8,3 +8,4 @@ C:\Users\vlado.pokrajac\source\repos\Faculty\Faculty\obj\Debug\Faculty.csproj.Co
 C:\Users\vlado.pokrajac\source\repos\Faculty\Faculty\obj\Debug\Faculty.csproj.CopyComplete
 C:\Users\vlado.pokrajac\source\repos\Faculty\Faculty\obj\Debug\Faculty.exe
 C:\Users\vlado.pokrajac\source\repos\Faculty\Faculty\obj\Debug\Faculty.pdb
+C:\Users\vlado.pokrajac\source\repos\Faculty\Faculty\bin\Debug\Enum.Performance.Library.dll

@@ -32,7 +32,12 @@ namespace Faculty.Model
             set { professor = value; }
         }
 
-
+        public Course(string title, string description, Professor proffessor)
+        {
+            this.title = title;
+            this.description = description;
+            this.professor = proffessor;
+        }
 
     }
 }

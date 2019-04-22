@@ -19,7 +19,12 @@ namespace Faculty.Model
 
         public override string ToString()
         {
-            return string.Format("{0} {1} {2}",base.FirstName, base.LastName, employeeId); //da li se ovako poziva Bog me ubio
+            return string.Format("{0} {1} {2}",FirstName, LastName, employeeId); //da li se ovako poziva Bog me ubio
+        }
+
+        public Professor(string employeeId, string firstName, string lastName, DateTime dateOfBirth):base(firstName, lastName, dateOfBirth)
+        {
+            this.employeeId = employeeId;
         }
     }
 }

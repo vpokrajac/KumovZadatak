@@ -45,30 +45,34 @@ namespace Faculty.Model
 
         public void Apply(Student s)
         {
+         
             foreach (Student student in listOfStudents)
             {
                 if(s.IndexNumber == student.IndexNumber)
                 {
                     return; 
                 }
-                listOfStudents.Add(s);
-                Console.WriteLine("Student je uspesno dodat!");
+             
+            }
 
+            listOfStudents.Add(s);
+        }
+
+        public void DeleteStudent(Student s)
+        {
+            foreach (Student student in listOfStudents)
+            {
+                if (student.IndexNumber == s.IndexNumber)
+                {
+                    listOfStudents.Remove(student);
+                }
             }
         }
 
-        //public void DeleteStudent(Student s)
-        //{
-        //    foreach (Student student in listOfStudents)
-        //    {
-        //        if (student.IndexNumber == s.IndexNumber)
-        //        {
-        //            listOfStudents.Remove(s);
-        //        }
-        //    }
-        //}   ZNAM OVAKO DA OBRISEM, NE ZNAM SAMO PREKO BR INDEXA :(
-        public Exam()
+        public Exam(Course course, DateTime examDate)
         {
+            this.course = course;
+            this.examDate = examDate;
             listOfStudents = new List<Student>(); //sam inicijalizovao
         }
 
