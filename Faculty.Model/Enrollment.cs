@@ -31,16 +31,19 @@ namespace Faculty.Model
 
         public bool? Passed
         {
-            get { return Passed; }
-            set { Passed = value; }
+            get { return passed; }
+           set {
+
+                passed = value;
+              }
         }
 
-        public int Ocena { get; set; }
+      
 
 
         public override string ToString()
         {
-            return string.Format("{0}{1}", Exam.ToString(), Ocena); //valja li ova? 
+            return string.Format("{0}{1}", Exam.ToString(), Mark); //valja li ova? 
         }
 
         private Mark? mark;
@@ -48,15 +51,25 @@ namespace Faculty.Model
         public Mark? Mark
         {
             get { return mark; }
-            set { mark = value; }
+            set
+            {
+                mark = value;
+
+                passed = true; //ni ovo ne radi
+
+            }
+
+
         }
 
 
-        public Enrollment(Exam exam, Student s, int ocena)
+        public Enrollment(Exam exam, Student s, Mark mark)
         {
             this.exam = exam;
             this.student = s;
-            this.Ocena = ocena;
+            this.mark  = mark;
+
+            
         }
 
         public Enrollment()

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using Faculty.Model.Enum;
@@ -76,9 +77,9 @@ namespace Faculty.Model
       
             foreach (Enrollment enroll in listOfexams) 
             {
-                if (enroll.Ocena > 5)
+                if (Convert.ToInt32(enroll.Mark) > 5 && Convert.ToInt32(enroll.Mark)<11)
                 {
-                    ocena += enroll.Ocena;
+                    ocena += (int) enroll.Mark;
                     brojac++;
                 }
                 continue;
@@ -97,7 +98,7 @@ namespace Faculty.Model
             foreach (Enrollment enroll in listOfexams)
             {
 
-                if (enroll.Ocena > 5)
+                if (Convert.ToInt32(enroll.Mark) > 5)
                 {
                     brojac++;
                 }
@@ -111,10 +112,22 @@ namespace Faculty.Model
         {
             foreach (Enrollment enrollment in listOfexams)
             {
-                Console.WriteLine(enrollment.Exam.ExamDate.ToShortDateString()+" "+enrollment.Student.FirstName+" "+ enrollment.Student.LastName+" "+enrollment.Exam.Course.Title+" "+enrollment.Ocena);
+                Console.WriteLine(enrollment.Exam.ExamDate.ToShortDateString()+" "+enrollment.Student.FirstName+" "+ enrollment.Student.LastName+" "+enrollment.Exam.Course.Title+" "+(int)enrollment.Mark);
             }
         }
 
+        public int GetPassedExamsEnum()
+        {
+            int broj = 0;
+            foreach (Enrollment enrollment in ListOfExams)
+            {
+                if (enrollment.Passed == true)
+                {
+                    broj++;
+                }
+            }
+            return broj;
+        }
        
     }
 }

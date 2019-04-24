@@ -25,8 +25,6 @@ namespace Faculty
             Student student = new Student();
             Console.WriteLine("Unesi neophodne podatke");
 
-            
-
             Console.WriteLine("Unesi ime studenta");
             string ime = Console.ReadLine();
 
@@ -36,23 +34,66 @@ namespace Faculty
             Console.WriteLine("Unesi brIndeksa");
             string brIndeksa = Console.ReadLine();
 
-            int ocena = 0;
-            int brojac = 0;
-            while (brojac < 5)
+            //int ocena = 0;
+            //int brojac = 0;
+            //while (brojac < 5)
+            //{
+
+            //    Console.WriteLine("Unesi ocenu");
+
+            //    try
+            //    {
+            //        ocena = Convert.ToInt32(Console.ReadLine());
+            //        break;
+            //    }
+            //    catch (Exception)
+            //    {
+            //        Console.WriteLine("Unesite broj!");
+            //        brojac++;
+            //    }
+            //}
+
+            Console.WriteLine("Unesi ocenu from one to ten");
+
+            Mark mark;
+            string ocena = Console.ReadLine().ToUpper();
+         
+
+            switch (ocena)
             {
-
-                Console.WriteLine("Unesi ocenu");
-
-                try
-                {
-                    ocena = Convert.ToInt32(Console.ReadLine());
+                case "ONE":
+                    mark = Mark.one;
                     break;
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Unesite broj!");
-                    brojac++;
-                }
+                case "TWO":
+                    mark = Mark.two;
+                    break;
+                case "THREE":
+                    mark = Mark.three;
+                    break;
+                case "FOUR":
+                    mark = Mark.four;
+                    break;
+                case "FIVE":
+                    mark = Mark.five;
+                    break;
+                case "SIX":
+                    mark = Mark.six;
+                    break;
+                case "SEVEN":
+                    mark = Mark.seven;
+                    break;
+                case "EIGHT":
+                    mark = Mark.eight;
+                    break;
+                case "NINE":
+                    mark = Mark.nine;
+                    break;
+                case "TEN":
+                    mark = Mark.ten;
+                    break;
+                default:
+                    mark=Mark.five;//nema smisla, ali moram da deklarisem ovde mark
+                    break;
             }
 
             Console.WriteLine("Unesi datum rodjenjau formatu mm/dd/yyyy");
@@ -112,17 +153,17 @@ namespace Faculty
 
 
 
-            Enrollment enroll1 = new Enrollment(exam, student2, ocena); 
-            Enrollment enroll2 = new Enrollment(exam2, student2, 8);
-            Enrollment enroll3 = new Enrollment(exam3, student2, 7);
-            Enrollment enroll4 = new Enrollment(exam4, student2, 7);
-            Enrollment enroll5 = new Enrollment(exam5, student2, 7);
-            Enrollment enroll6 = new Enrollment(exam6, student2, 7);
-            Enrollment enroll7 = new Enrollment(exam6, student3, 7);
-            Enrollment enroll8 = new Enrollment(exam6, student3, 4);//nema smisla ali ja student3 mogu da dodam u student2
-            Enrollment enroll9 = new Enrollment(exam6, student3, 7);
-            Enrollment enroll10 = new Enrollment(exam6, student3, 10);
-            Enrollment enroll11 = new Enrollment(exam6, student3, 8);
+            Enrollment enroll1 = new Enrollment(exam, student, mark);
+            Enrollment enroll2 = new Enrollment(exam2, student2, mark);
+            Enrollment enroll3 = new Enrollment(exam3, student2, mark);
+            Enrollment enroll4 = new Enrollment(exam4, student2, mark);
+            Enrollment enroll5 = new Enrollment(exam5, student2, mark);
+            Enrollment enroll6 = new Enrollment(exam6, student2, mark);
+            Enrollment enroll7 = new Enrollment(exam6, student3, mark);
+            Enrollment enroll8 = new Enrollment(exam6, student3, mark);//nema smisla ali ja student3 mogu da dodam u student2
+            Enrollment enroll9 = new Enrollment(exam6, student3, mark);
+            Enrollment enroll10 = new Enrollment(exam6, student3, mark);
+            Enrollment enroll11 = new Enrollment(exam6, student3, mark);
 
             Exams.Add(exam2);
 
@@ -178,7 +219,8 @@ namespace Faculty
 
                     case 4:
                         student2.IspisiIspite();
-                        Console.WriteLine("Ukupan broj polozenih ispita studenta je: " + student2.GetPassedExams());
+                        Console.WriteLine("Ukupan broj polozenih ispita studenta je: " + student2.GetPassedExamsEnum());
+                        Console.WriteLine("Prosecan broj ocene studenta je : " + student2.AverageMark2());
                         break;
                     case 5:
                         Environment.Exit(-1);
