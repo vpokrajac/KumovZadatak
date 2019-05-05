@@ -12,6 +12,13 @@ namespace Faculty.Model
    
    public class Exam
     {
+        public Exam(Course course, DateTime examDate)
+        {
+            this.course = course;
+            this.examDate = examDate;
+            listOfStudents = new List<Student>(); //sam inicijalizovao
+        }
+
         private Course course;
 
         public Course Course
@@ -43,39 +50,21 @@ namespace Faculty.Model
             return string.Format("{0},{1}", course, examDate);
         }
 
-        public void Apply(Student s)
+        public bool Apply(Student student)
         {
          
-            foreach (Student student in listOfStudents)
+            foreach (Student currentStudent in listOfStudents)
             {
-                if(s.IndexNumber == student.IndexNumber)
+                if(student.IndexNumber == currentStudent.IndexNumber)
                 {
-                    return; 
+                    return false; 
                 }
-             
+      
             }
+            listOfStudents.Add(student);
+            return true;
 
-            listOfStudents.Add(s);
+
         }
-
-        public void DeleteStudent(Student s)
-        {
-            foreach (Student student in listOfStudents)
-            {
-                if (student.IndexNumber == s.IndexNumber)
-                {
-                    listOfStudents.Remove(student);
-                }
-            }
-        }
-
-        public Exam(Course course, DateTime examDate)
-        {
-            this.course = course;
-            this.examDate = examDate;
-            listOfStudents = new List<Student>(); //sam inicijalizovao
-        }
-
-
     }
 }

@@ -8,7 +8,11 @@ namespace Faculty.Model
 {
    public class Professor : Person
     {
-        
+
+        public Professor(string employeeId, string firstName, string lastName, DateTime dateOfBirth) : base(firstName, lastName, dateOfBirth)
+        {
+            this.employeeId = employeeId;
+        }
         private string employeeId;
 
         public string EmployeeId
@@ -22,9 +26,5 @@ namespace Faculty.Model
             return string.Format("{0} {1} {2}",FirstName, LastName, employeeId); //da li se ovako poziva Bog me ubio
         }
 
-        public Professor(string employeeId, string firstName, string lastName, DateTime dateOfBirth):base(firstName, lastName, dateOfBirth)
-        {
-            this.employeeId = employeeId;
-        }
     }
 }

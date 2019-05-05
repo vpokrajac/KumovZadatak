@@ -12,9 +12,15 @@ namespace Faculty.Model
    
     public class Student : Person
     {
+        public Student(string indexNumber, string firstName, string lastName, DateTime dateOfBirth) : base(firstName, lastName, dateOfBirth)
+
+        {
+            listOfexams = new List<Enrollment>();
+            this.indexNumber = string.Format("{0}/{1}", int.Parse(indexNumber), DateTime.Today.Year);
+        }
+
         private string indexNumber;
      
-
         public string IndexNumber
         {
             get { return indexNumber; }
@@ -30,14 +36,21 @@ namespace Faculty.Model
             get { return listOfexams; }
             set { listOfexams = value; }
         }
-
         private double averageMark;
-
-
         public double AverageMark
         {
-            get { return averageMark; }
+            get {
+                double ocena = 0;
+                foreach (Enrollment enrollment in listOfexams)
+                {
+                    ocena += Convert.ToInt32(enrollment.Mark);
+                }
+                averageMark=ocena/listOfexams.Count;
+                return averageMark;
+                }
         }
+
+
         public Status Status { get; set; }
 
         public Student()
@@ -47,22 +60,19 @@ namespace Faculty.Model
 
         }
 
-        public Student(string indexNumber, string firstName, string lastName, DateTime dateOfBirth):base(firstName, lastName, dateOfBirth)
-
-        {
-            listOfexams = new List<Enrollment>();
-            this.indexNumber = string.Format("{0}/{1}", int.Parse(indexNumber), DateTime.Today.Year);
-        }
-
         public override bool IsValid()
         {
-            
             base.IsValid();
-            if (GetAge() < 16)
+            string[] indexNumberFormat = indexNumber.Split('/');
+            int firstPartOfIndexNumber;
+            bool isNumerical = int.TryParse(indexNumberFormat[0], out firstPartOfIndexNumber);//da li sadrzi integer
+            string date = indexNumberFormat[1];
+
+            if (GetAge() > 16 && isNumerical == true && date==DateTime.Today.Year.ToString()) 
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
       
         public override string ToString()
@@ -70,64 +80,6 @@ namespace Faculty.Model
             return string.Format("{0}\nIndex number:{1}", base.ToString(), indexNumber);
         }
 
-        public double AverageMark2()
-        {
-            int brojac = 0;
-            double ocena = 0;
-      
-            foreach (Enrollment enroll in listOfexams) 
-            {
-                if (Convert.ToInt32(enroll.Mark) > 5 && Convert.ToInt32(enroll.Mark)<11)
-                {
-                    ocena += (int) enroll.Mark;
-                    brojac++;
-                }
-                continue;
-
-            }
-           double prosecnaOcena = ocena / brojac;
-            return prosecnaOcena;
-         
-
-           
-        }
-
-        public int GetPassedExams()
-        {
-            int brojac = 0;
-            foreach (Enrollment enroll in listOfexams)
-            {
-
-                if (Convert.ToInt32(enroll.Mark) > 5)
-                {
-                    brojac++;
-                }
-
-            }
-
-            return brojac;
-        }
-
-        public void IspisiIspite()
-        {
-            foreach (Enrollment enrollment in listOfexams)
-            {
-                Console.WriteLine(enrollment.Exam.ExamDate.ToShortDateString()+" "+enrollment.Student.FirstName+" "+ enrollment.Student.LastName+" "+enrollment.Exam.Course.Title+" "+(int)enrollment.Mark);
-            }
-        }
-
-        public int GetPassedExamsEnum()
-        {
-            int broj = 0;
-            foreach (Enrollment enrollment in ListOfExams)
-            {
-                if (enrollment.Passed == true)
-                {
-                    broj++;
-                }
-            }
-            return broj;
-        }
        
     }
 }

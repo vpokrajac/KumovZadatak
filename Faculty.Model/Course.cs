@@ -8,6 +8,13 @@ namespace Faculty.Model
 {
    public class Course
     {
+        public Course(string title, string description, Professor proffessor)
+        {
+            this.title = title;
+            this.description = description;
+            this.professor = proffessor;
+        }
+
         private string title;
 
         public string Title
@@ -30,13 +37,6 @@ namespace Faculty.Model
         {
             get { return professor; }
             set { professor = value; }
-        }
-
-        public Course(string title, string description, Professor proffessor)
-        {
-            this.title = title;
-            this.description = description;
-            this.professor = proffessor;
         }
 
     }

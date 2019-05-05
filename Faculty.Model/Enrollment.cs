@@ -7,10 +7,16 @@ using Faculty.Model.Enum;
 
 namespace Faculty.Model
 {
-    
 
-   public class Enrollment
+    public class Enrollment
     {
+        public Enrollment(Exam exam, Student student, Mark mark)
+        {
+            this.exam = exam;
+            this.student = student;
+            this.mark = mark;
+
+        }
         private Student student;
 
         public Student Student
@@ -32,10 +38,6 @@ namespace Faculty.Model
         public bool? Passed
         {
             get { return passed; }
-           set {
-
-                passed = value;
-              }
         }
 
       
@@ -59,23 +61,7 @@ namespace Faculty.Model
 
             }
 
-
         }
 
-
-        public Enrollment(Exam exam, Student s, Mark mark)
-        {
-            this.exam = exam;
-            this.student = s;
-            this.mark  = mark;
-
-            
-        }
-
-        public Enrollment()
-        {
-        }
-
-     
     }
 }

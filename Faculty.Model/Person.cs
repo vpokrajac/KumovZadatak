@@ -8,6 +8,19 @@ namespace Faculty.Model
 {
     public class Person
     {
+        public Person()
+        {
+            this.firstName = string.Empty;
+            this.lastName = string.Empty;
+        }
+
+        public Person(string firstName, string lastName, DateTime dateOfBirth)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.dateOfBirth = dateOfBirth;
+        }
+
         private string firstName;
 
         public string FirstName
@@ -32,19 +45,7 @@ namespace Faculty.Model
             set { dateOfBirth = value; }
         }
 
-        public Person()
-        {
-            this.firstName = "";
-            this.lastName = "";
-        }
-
-        public Person(string firstName, string lastName, DateTime dateOfBirth)
-        {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.dateOfBirth = dateOfBirth;
-        }
-
+    
         public override string ToString()
         {
 
@@ -53,10 +54,8 @@ namespace Faculty.Model
 
         public int GetAge()
         {
-            int dani = (DateTime.Today - dateOfBirth).Days;
-            return dani / 365;
-            //return (((TimeSpan)(DateTime.Today - dateOfBirth)).Days)/365;
-         
+            int days = (DateTime.Today - dateOfBirth).Days;
+            return days / 365;
              }
 
         public virtual bool IsValid() 
